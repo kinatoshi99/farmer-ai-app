@@ -1,6 +1,7 @@
 import Logo from "./Logo";
 import DropdownMenu from "./DropdownMenu";
 import ActionButtons from "./ActionButtons";
+import { UserMenu } from "./UserMenu";
 
 export const Navbar = () => {
   return (
@@ -13,6 +14,7 @@ export const Navbar = () => {
       </div>
       <div className="navbar-end">
         <ActionButtons />
+        <UserMenu />
       </div>
     </div>
   );
