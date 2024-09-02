@@ -12,7 +12,7 @@ import { dark } from "@clerk/themes";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navigation/Navbar";
-import Footer from "./components/footer/Footer";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
