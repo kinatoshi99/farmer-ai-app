@@ -8,17 +8,16 @@ import { Slider } from "@/components/ui/slider"
 import { Checkbox } from "@/components/ui/checkbox"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Search, ChevronDown } from 'lucide-react'
-
-const placeholderImage = "https://placehold.co/200x200"
+import Image from 'next/image'
 
 // Mock data for demonstration
 const products = [
-  { id: 1, name: "Fresh Apples", price: 2.99, category: "Fruits", image: placeholderImage },
-  { id: 2, name: "Organic Carrots", price: 1.99, category: "Vegetables", image: placeholderImage },
-  { id: 3, name: "Free-range Eggs", price: 4.99, category: "Dairy", image: placeholderImage },
-  { id: 4, name: "Honey Jar", price: 7.99, category: "Other", image: placeholderImage },
-  { id: 5, name: "Grass-fed Beef", price: 12.99, category: "Meat", image: placeholderImage },
-  { id: 6, name: "Organic Milk", price: 3.99, category: "Dairy", image: placeholderImage },
+  { id: 1, name: "Fresh Apples", price: 2.99, category: "Fruits", image: "/images/products/apple.jpeg" },
+  { id: 2, name: "Organic Carrots", price: 1.99, category: "Vegetables", image: "/images/products/carrot.jpeg" },
+  { id: 3, name: "Free-range Eggs", price: 4.99, category: "Dairy", image: "/images/products/eggs.jpeg" },
+  { id: 4, name: "Honey Jar", price: 7.99, category: "Other", image: "/images/products/honey.jpeg" },
+  { id: 5, name: "Grass-fed Beef", price: 12.99, category: "Meat", image: "/images/products/beef.jpeg" },
+  //{ id: 6, name: "Organic Milk", price: 3.99, category: "Dairy", image: "/images/milk.jpg" },
 ];
 
 export default function FarmerMarketplace() {
@@ -48,7 +47,7 @@ export default function FarmerMarketplace() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Farmer's Marketplace</h1>
+      <h1 className="text-3xl font-bold mb-6">Farmer&apos;s Marketplace</h1>
       <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar with filters */}
         <aside className="w-full md:w-1/4">
@@ -118,7 +117,7 @@ export default function FarmerMarketplace() {
             {filteredProducts.map(product => (
               <Card key={product.id}>
                 <CardHeader>
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-t-lg" />
+                  <Image src={product.image} alt={product.name} width={200} height={200} className="w-full h-48 object-cover rounded-t-lg" />
                 </CardHeader>
                 <CardContent>
                   <CardTitle>{product.name}</CardTitle>

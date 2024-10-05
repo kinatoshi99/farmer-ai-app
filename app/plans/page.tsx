@@ -142,6 +142,7 @@ const Pricing: React.FC = () => {
   const PlanCard: React.FC<{ plan: Plan; index: number }> = ({ plan, index }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [cardRefCurrent, setCardRefCurrent] = useState<HTMLDivElement | null>(null);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -158,14 +159,15 @@ const Pricing: React.FC = () => {
 
       if (cardRef.current) {
         observer.observe(cardRef.current);
+        setCardRefCurrent(cardRef.current);
       }
 
       return () => {
-        if (cardRef.current) {
-          observer.unobserve(cardRef.current);
+        if (cardRefCurrent) {
+          observer.unobserve(cardRefCurrent);
         }
       };
-    }, []);
+    }, [cardRefCurrent]);
 
     return (
       <div 
