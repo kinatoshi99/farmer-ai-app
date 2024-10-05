@@ -1,3 +1,5 @@
+import React from 'react';
+
 const DropdownMenu = () => {
   return (
     <div className="dropdown">
@@ -22,7 +24,7 @@ const DropdownMenu = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
       >
         <li>
-          <a>Marketplace</a>
+          <a href="/marketplace">Marketplace</a> {/* Added link to marketplace */}
         </li>
         <li>
           <a>Community</a>
