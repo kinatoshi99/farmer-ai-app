@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ThemeContext } from "../layout";
+import LanguageSwitch from '@/components/LanguageSwitch';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -107,6 +108,7 @@ export default function Navbar() {
               />
             </div>
           </form>
+          {/* <LanguageSwitch /> */}
           <Button variant="ghost" size="icon" className="relative" onClick={toggleDarkMode}>
             {mounted && (
               isDarkMode ? (

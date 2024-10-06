@@ -1,17 +1,8 @@
+import nextTranslate from 'next-translate-plugin'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-      },
-    ],
-  },
+  reactStrictMode: true,
 };
 
-export default nextConfig;
+export default nextTranslate(nextConfig);

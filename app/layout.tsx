@@ -46,7 +46,6 @@ export default function RootLayout({
     }
   }, []);
 
-  // app/layout.tsx
 
 const toggleDarkMode = () => {
   setIsDarkMode(!isDarkMode);
