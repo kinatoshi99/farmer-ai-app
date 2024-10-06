@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useContext } from "react"
 import Link from "next/link"
 import { UserButton } from "@clerk/nextjs"
-import { Bell, Menu, Search, ShoppingBag, Cpu, Users, DollarSign } from "lucide-react"
+import { Bell, Menu, Search, ShoppingBag, Cpu, Users, DollarSign, Moon, Sun } from "lucide-react"
 import Logo from "./Logo"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,9 +14,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ThemeContext } from "../layout";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -58,7 +65,7 @@ export default function Navbar() {
                 <span>Community</span>
               </Link>
               <Link
-                href="/pricing"
+                href="/plans"
                 className="flex items-center space-x-2 text-sm"
                 onClick={() => setIsOpen(false)}
               >
@@ -100,6 +107,16 @@ export default function Navbar() {
               />
             </div>
           </form>
+          <Button variant="ghost" size="icon" className="relative" onClick={toggleDarkMode}>
+            {mounted && (
+              isDarkMode ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />
             <span className="sr-only">Notifications</span>
