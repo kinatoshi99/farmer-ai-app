@@ -1,9 +1,15 @@
 {
+  "Manifest": {
+    "name": "Farmer AI App"
+  },
   "Metadata": {
     "title": "Farmer AI"
   },
+  "LanguageSwitch": {
+    "label": "Switch language"
+  },
   "HomePage": {
-    "title": "Hello world!",
+    "hello": "Hello world!",
     "about": "Go to the about page"
   }
 }

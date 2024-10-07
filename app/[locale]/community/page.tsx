@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar';
 
 const FarmerCard = ({ name, specialty, avatar }: { name: string, specialty: string, avatar: string }) => (
   <Card className="mb-4">

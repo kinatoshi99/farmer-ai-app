@@ -1,9 +1,9 @@
 "use client"
 
 import { useLocale, useTranslations } from 'next-intl'
-import {useRouter, usePathname} from '@/i18n/routing';
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+import {useRouter, usePathname} from '../../lib/navigation';
+import { Label } from "../ui/label"
+import { Switch } from "../ui/switch"
 import { useState, useTransition } from "react"
 
 export default function LanguageSwitch() {

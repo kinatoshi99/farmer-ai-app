@@ -3,9 +3,9 @@
 import { useContext } from "react"
 import { UserButton } from "@clerk/nextjs"
 import { Bell, Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeContext } from "../layout"
-import LanguageSwitch from '@/app/navigation/LanguageSwitch'
+import { Button } from "../ui/button"
+import LanguageSwitch from "./LanguageSwitch"
+import { ThemeContext } from "../../app/ClientThemeProvider"
 
 export default function UserActions({ mounted }: { mounted: boolean }) {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext)

@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from 'react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Slider } from "@/components/ui/slider"
-import { Checkbox } from "@/components/ui/checkbox"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Input } from "../../../components/ui/input"
+import { Button } from "../../../components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
+import { Slider } from "../../../components/ui/slider"
+import { Checkbox } from "../../../components/ui/checkbox"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../../components/ui/dropdown-menu"
 import { Search, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 
