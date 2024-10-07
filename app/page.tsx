@@ -1,8 +1,20 @@
 import MainSection from '@/components/main/MainSection';
-import useTranslation from 'next-translate/useTranslation'
+import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
+ 
+type LocaleParams = {
+  locale: string;
+} 
+
+export async function generateMetadata({params } : { params: LocaleParams} ) {
+  const t = await getTranslations({params: params.locale, namespace: 'Metadata'});
+  return {
+    title: t('title')
+  };
+}
 
 export default function Home() {
-  const { t } = useTranslation('common');
+  const t = useTranslations('HomePage');
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <MainSection/>

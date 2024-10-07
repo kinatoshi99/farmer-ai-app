@@ -1,15 +1,13 @@
-"use client"
+"use client";
 
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  ClerkProvider,
-} from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./navigation/Navbar";
+import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/footer/Footer";
 import { createContext, useState, useEffect } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,11 +29,13 @@ function ClerkComponent({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -46,26 +46,27 @@ export default function RootLayout({
     }
   }, []);
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem("darkMode", (!isDarkMode).toString()); // Convert boolean to string
+  };
 
-const toggleDarkMode = () => {
-  setIsDarkMode(!isDarkMode);
-  localStorage.setItem("darkMode", (!isDarkMode).toString()); // Convert boolean to string
-};
-
-
+  const messages = await getMessages();
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
-      <html lang="en" className={isDarkMode ? "dark" : ""} >
+      <html lang={locale} className={isDarkMode ? "dark" : ""}>
         <body className={inter.className}>
-          <ClerkComponent>
-            <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col h-screen">
-                <Navbar />
-                {children}
-                <Footer />
+          <NextIntlClientProvider messages={messages}>
+            <ClerkComponent>
+              <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col h-screen">
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </div>
               </div>
-            </div>
-          </ClerkComponent>
+            </ClerkComponent>
+          </NextIntlClientProvider>
         </body>
       </html>
     </ThemeContext.Provider>
